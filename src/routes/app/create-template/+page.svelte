@@ -203,8 +203,22 @@
 	}
 
 	function handleSendMessage() {
-		console.log('Sending message:', { campaignId, message });
-		alert('Mensaje enviado correctamente.');
+		try {
+			const responseCampaignMessage = campaignService.campaignMessage(
+				idcampañaStore.get() as string,
+				message
+			);
+			console.log('Response message campaign: ', responseCampaignMessage);
+			alert('Mensaje enviado correctamente.');
+			const responseActivate = campaignService.campaignActivate(
+				idcampañaStore.get() as string,
+				'/generate-certificate-by-user'
+			);
+			console.log('Response activate campaign: ', responseActivate);
+		} catch (error) {
+			console.error('Error al enviar el mensaje:', error);
+			alert('Error al enviar el mensaje. Por favor, intenta nuevamente.');
+		}
 	}
 </script>
 

@@ -22,7 +22,7 @@ class CampaignService {
 		formData.append('y', payload.y.toString());
 		formData.append('font_size', payload.font_size.toString());
 		formData.append('font_family', payload.font_family);
-		formData.append('certificate', payload.certificate);
+		formData.append('certificate', payload?.certificate || '');
 
 		try {
 			const response = await fetch(url, {
@@ -75,6 +75,57 @@ class CampaignService {
 		} catch (error: unknown) {
 			console.error('Error al subir el archivo de estudiantes:', error);
 			throw new Error(error.message || 'Ocurrió un error inesperado al subir el archivo.');
+		}
+	}
+
+	async campaignMessage(campaignId: string, message: string): Promise<string> {
+		console.log('message...', message);
+		const url = `${this.baseURL}/campaigns/${campaignId}/message`;
+
+		try {
+			const response = await fetch(url, {
+				method: 'PUT',
+				body: JSON.stringify({ message: message }),
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				}
+			});
+
+			if (!response.ok) {
+				const errorData = await response.json().catch(() => ({}));
+				throw new Error(errorData.message || 'Error al enviar el mensaje.');
+			}
+
+			const data = await response.json();
+			return data.message || 'Mensaje enviado correctamente.';
+		} catch (error: unknown) {
+			console.error('Error al enviar el mensaje:', error);
+			throw new Error(error.message || 'Ocurrió un error inesperado al enviar el mensaje.');
+		}
+	}
+	async campaignActivate(campaignId: string, fixed_url: string): Promise<string> {
+		const url = `${this.baseURL}/campaigns/${campaignId}/activate`;
+		try {
+			const response = await fetch(url, {
+				method: 'POST',
+				body: JSON.stringify({ fixed_url: fixed_url }),
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				}
+			});
+
+			if (!response.ok) {
+				const errorData = await response.json().catch(() => ({}));
+				throw new Error(errorData.message || 'Error al activar la campaña.');
+			}
+
+			const data = await response.json();
+			return data.message || 'Campaña activada correctamente.';
+		} catch (error: unknown) {
+			console.error('Error al activar la campaña:', error);
+			throw new Error(error.message || 'Ocurrió un error inesperado al activar la campaña.');
 		}
 	}
 }

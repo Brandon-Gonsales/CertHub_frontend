@@ -33,7 +33,7 @@
 	<div
 		class="w-full max-w-lg rounded-xl border border-gray-200 bg-white p-10 text-center shadow-lg"
 	>
-		<h1 class="mb-2 font-serif text-3xl font-bold text-gray-800">Certificado de Finalización</h1>
+		<h1 class="mb-2 text-3xl font-bold text-gray-800">Certificado de Finalización</h1>
 		<div class="mx-auto mb-6 h-1 w-24 bg-gray-300"></div>
 
 		<p class="mb-8 leading-relaxed text-gray-700">
