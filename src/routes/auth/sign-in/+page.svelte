@@ -109,34 +109,6 @@
 						</p>
 					</div>
 				</div>
-
-				<div class="flex items-start">
-					<div
-						class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-light-primary/10 dark:bg-dark-primary/10"
-					>
-						<svg
-							viewBox="0 0 24 24"
-							fill="none"
-							class="h-6 w-6 text-light-primary dark:text-dark-primary"
-						>
-							<path
-								d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-							/>
-						</svg>
-					</div>
-					<div>
-						<h3 class="mb-1 text-lg font-semibold text-light-primary dark:text-dark-primary">
-							Plantillas Premium
-						</h3>
-						<p class="text-sm text-light-primary/80 dark:text-dark-primary/80">
-							Diseños profesionales listos para usar
-						</p>
-					</div>
-				</div>
-
 				<div class="flex items-start">
 					<div
 						class="mr-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-light-primary/10 dark:bg-dark-primary/10"
