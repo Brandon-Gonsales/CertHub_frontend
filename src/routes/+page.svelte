@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { Button } from '$lib/components/ui';
+	import CertificatePreviewDesign from '$lib/components/ui/certificatePreviewDesign.svelte';
 	import DataTable from '$lib/components/ui/dataTable.svelte';
 	import FileUpload from '$lib/components/ui/fileUpload.svelte';
 	import {
@@ -139,7 +140,7 @@
 				</Button>
 			</div>
 
-			<div class="relative mt-16">
+			<!-- <div class="relative mt-16">
 				<div class="mx-auto max-w-5xl">
 					<div
 						class="rounded-2xl border-4 border-light-tertiary bg-gradient-to-br from-light-primary via-light-primary_d to-light-four p-8 shadow-2xl dark:border-dark-tertiary dark:from-dark-primary dark:via-dark-primary_d dark:to-dark-four"
@@ -162,7 +163,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
+			<CertificatePreviewDesign />
 		</div>
 	</section>
 
