@@ -22,7 +22,7 @@
 				<div
 					class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-45deg] text-[200px] font-bold text-light-tertiary opacity-[0.02] select-none dark:text-dark-tertiary"
 				>
-					IA
+					DataHub
 				</div>
 
 				<!-- Ornamentos de esquina -->
@@ -104,14 +104,11 @@
 					</p>
 				</div>
 
-				<!-- Línea divisoria -->
 				<div
 					class="mb-8 h-0.5 bg-gradient-to-r from-transparent via-light-tertiary to-transparent opacity-50 dark:via-dark-tertiary"
 				></div>
 
-				<!-- Footer con fecha, sello y firma -->
 				<div class="flex items-end justify-between px-8">
-					<!-- Fecha -->
 					<div class="text-center">
 						<p class="mb-2 text-sm text-light-secondary dark:text-dark-secondary">
 							Fecha de emisión
@@ -121,7 +118,6 @@
 						</p>
 					</div>
 
-					<!-- Sello central -->
 					<div class="relative">
 						<div
 							class="flex h-24 w-24 items-center justify-center rounded-full border-4 border-light-secondary bg-gradient-to-br from-light-tertiary to-light-tertiary_d shadow-xl dark:border-dark-secondary dark:from-dark-tertiary dark:to-dark-tertiary_d"
@@ -155,10 +151,9 @@
 					</div>
 				</div>
 
-				<!-- ID del certificado -->
 				<div class="mt-8 text-center">
 					<p class="text-xs text-light-secondary opacity-70 dark:text-dark-secondary">
-						Certificado No. AI-2025-10247
+						Certificado No. 080801-2025-10247
 					</p>
 				</div>
 			</div>
