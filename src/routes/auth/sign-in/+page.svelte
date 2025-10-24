@@ -144,45 +144,19 @@
 		</div>
 	</div>
 
-	<!-- Right Side - Login Form -->
 	<div
 		class="relative z-20 flex flex-1 items-center justify-center bg-light-primary p-8 dark:bg-dark-primary"
 	>
 		<div class="w-full max-w-md">
 			<!-- Mobile Logo -->
-			<div class="mb-10 flex flex-col items-center justify-center lg:hidden">
-				<div
-					class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-light-tertiary to-light-secondary dark:from-dark-tertiary dark:to-dark-secondary"
-				>
-					<svg viewBox="0 0 24 24" fill="none" class="h-8 w-8 text-white">
-						<path
-							d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						/>
-						<circle
-							cx="17"
-							cy="17"
-							r="3"
-							stroke="currentColor"
-							stroke-width="2"
-							fill="currentColor"
-						/>
-					</svg>
+			<div class="mb-10 flex flex-col items-center justify-center">
+				<div class="mb-4 flex h-32 w-32 items-center justify-center">
+					<img src="/images/logo_empty_datahub.png" alt="" />
 				</div>
-				<span class="text-3xl font-bold text-light-secondary dark:text-dark-secondary">CertHub</span
+				<span class="text-3xl font-bold text-light-secondary dark:text-dark-secondary"
+					>DataHub<span class="ml-2 text-light-tertiary dark:text-dark-tertiary">Analitics</span
+					></span
 				>
-			</div>
-
-			<div class="mb-8">
-				<h2 class="mb-3 text-4xl font-bold text-light-black dark:text-dark-white">
-					Bienvenido de nuevo
-				</h2>
-				<p class="text-light-black/70 dark:text-dark-white/70">
-					Accede a tu espacio de creación de certificados
-				</p>
 			</div>
 
 			<!-- Error Message -->
@@ -215,7 +189,7 @@
 							type="text"
 							bind:value={username}
 							onkeypress={handleKeyPress}
-							class="w-full rounded-xl border-2 border-light-four/30 bg-light-primary py-3.5 pr-4 pl-12 text-light-black transition-all outline-none placeholder:text-light-four/50 hover:border-light-four/50 focus:border-light-tertiary focus:ring-4 focus:ring-light-tertiary/10 dark:border-dark-four/30 dark:bg-dark-primary dark:text-dark-white dark:placeholder:text-dark-four/50 dark:hover:border-dark-four/50 dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary/10"
+							class="w-full rounded-xl border-2 border-light-four bg-light-primary py-3.5 pr-4 pl-12 text-light-black transition-all outline-none placeholder:text-light-four/50 hover:border-light-four focus:border-light-tertiary dark:border-dark-four dark:bg-dark-primary dark:text-dark-white dark:placeholder:text-dark-four dark:hover:border-dark-four dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary"
 							placeholder="usuario@ejemplo.com"
 							disabled={isLoading}
 						/>
@@ -239,14 +213,14 @@
 							type={showPassword ? 'text' : 'password'}
 							bind:value={password}
 							onkeypress={handleKeyPress}
-							class="w-full rounded-xl border-2 border-light-four/30 bg-light-primary py-3.5 pr-12 pl-12 text-light-black transition-all outline-none placeholder:text-light-four/50 hover:border-light-four/50 focus:border-light-tertiary focus:ring-4 focus:ring-light-tertiary/10 dark:border-dark-four/30 dark:bg-dark-primary dark:text-dark-white dark:placeholder:text-dark-four/50 dark:hover:border-dark-four/50 dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary/10"
+							class="w-full rounded-xl border-2 border-light-four bg-light-primary py-3.5 pr-12 pl-12 text-light-black transition-all outline-none placeholder:text-light-four/50 hover:border-light-four focus:border-light-tertiary dark:border-dark-four dark:bg-dark-primary dark:text-dark-white dark:placeholder:text-dark-four/50 dark:hover:border-dark-four dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary"
 							placeholder="••••••••"
 							disabled={isLoading}
 						/>
 						<button
 							type="button"
 							onclick={() => (showPassword = !showPassword)}
-							class="absolute top-1/2 right-4 -translate-y-1/2 text-light-four transition-colors hover:text-light-black dark:text-dark-four dark:hover:text-dark-white"
+							class="absolute top-1/2 right-4 -translate-y-1/2 text-light-black transition-colors hover:text-light-four dark:text-dark-white"
 							disabled={isLoading}
 						>
 							{#if showPassword}

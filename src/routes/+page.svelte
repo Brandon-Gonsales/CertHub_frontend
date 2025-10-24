@@ -343,7 +343,11 @@
 	</section>
 
 	<!-- About Section -->
-	<section id="about" class="px-4 py-20 sm:px-6 lg:px-8">
+	<section id="about" class="relative px-4 py-20 sm:px-6 lg:px-8">
+		<div
+			class="absolute inset-0 z-0 bg-contain bg-center bg-no-repeat opacity-20"
+			style="background-image: url('/images/logo_empty_datahub.png');"
+		></div>
 		<div class="mx-auto max-w-7xl">
 			<div class="mb-16 text-center">
 				<h2 class="mb-4 text-4xl font-bold text-light-black dark:text-dark-white">

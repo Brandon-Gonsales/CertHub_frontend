@@ -1,27 +1,150 @@
 <script lang="ts">
-	let isSignIn = true;
-	let showPassword = false;
-	let email = '';
-	let password = '';
+	import { goto } from '$app/navigation';
+	import { Button } from '$lib/components/ui';
+	import { ChevronLeftIcon, EyeIcon, EyeOffIcon, UserIcon } from '$lib/icons/outline';
+	import { ExclamationCircleIcon, LockIcon } from '$lib/icons/solid';
 
-	function handleSubmit() {
-		console.log('Submitted:', { email, password, type: isSignIn ? 'signin' : 'signup' });
+	let showPassword = false;
+	let username = '';
+	let password = '';
+	let errorMessage = '';
+	let isLoading = false;
+
+	async function handleSubmit() {
+		console.log(username, password);
+		goto('/app/create-template');
 	}
 
-	function toggleAuth() {
-		isSignIn = !isSignIn;
-		email = '';
-		password = '';
-		showPassword = false;
+	function handleKeyPress(event: KeyboardEvent) {
+		if (event.key === 'Enter') {
+			handleSubmit();
+		}
 	}
 </script>
 
 <div
+	class="relative z-20 flex min-h-screen flex-1 items-center justify-center bg-light-primary p-8 dark:bg-dark-primary"
+>
+	<div class="w-full max-w-md">
+		<!-- Mobile Logo -->
+		<div class="mb-10 flex flex-col items-center justify-center">
+			<div class="mb-4 flex h-32 w-32 items-center justify-center">
+				<img src="/images/logo_empty_datahub.png" alt="" />
+			</div>
+			<span class="text-3xl font-bold text-light-secondary dark:text-dark-secondary"
+				>DataHub<span class="ml-2 text-light-tertiary dark:text-dark-tertiary">Analitics</span
+				></span
+			>
+		</div>
+
+		<!-- Error Message -->
+		{#if errorMessage}
+			<div
+				class="mb-6 flex items-start rounded-xl border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30"
+			>
+				<ExclamationCircleIcon
+					class="mt-0.5 mr-3 h-5 w-5 flex-shrink-0 text-light-error dark:text-dark-error"
+				/>
+				<p class="text-sm text-light-error dark:text-dark-error">{errorMessage}</p>
+			</div>
+		{/if}
+
+		<form onsubmit={handleSubmit} class="space-y-5">
+			<!-- Username -->
+			<div>
+				<label
+					for="username"
+					class="mb-2 block text-sm font-semibold text-light-black dark:text-dark-white"
+				>
+					Usuario o Email
+				</label>
+				<div class="relative">
+					<UserIcon
+						class="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-light-four dark:text-dark-four"
+					/>
+					<input
+						id="username"
+						type="text"
+						bind:value={username}
+						onkeypress={handleKeyPress}
+						class="w-full rounded-xl border-2 border-light-four bg-light-primary py-3.5 pr-4 pl-12 text-light-black transition-all outline-none placeholder:text-light-four/50 hover:border-light-four/50 focus:border-light-tertiary dark:border-dark-four dark:bg-dark-primary dark:text-dark-white dark:placeholder:text-dark-four dark:hover:border-dark-four dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary"
+						placeholder="usuario@ejemplo.com"
+						disabled={isLoading}
+					/>
+				</div>
+			</div>
+
+			<!-- Password -->
+			<div>
+				<label
+					for="password"
+					class="mb-2 block text-sm font-semibold text-light-black dark:text-dark-white"
+				>
+					Contraseña
+				</label>
+				<div class="relative">
+					<LockIcon
+						class="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-light-four dark:text-dark-four"
+					/>
+					<input
+						id="password"
+						type={showPassword ? 'text' : 'password'}
+						bind:value={password}
+						onkeypress={handleKeyPress}
+						class="w-full rounded-xl border-2 border-light-four bg-light-primary py-3.5 pr-12 pl-12 text-light-black transition-all outline-none placeholder:text-light-four/50 hover:border-light-four/50 focus:border-light-tertiary dark:border-dark-four dark:bg-dark-primary dark:text-dark-white dark:placeholder:text-dark-four/50 dark:hover:border-dark-four dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary"
+						placeholder="••••••••"
+						disabled={isLoading}
+					/>
+					<button
+						type="button"
+						onclick={() => (showPassword = !showPassword)}
+						class="absolute top-1/2 right-4 -translate-y-1/2 text-light-black transition-colors hover:text-light-four dark:text-dark-white"
+						disabled={isLoading}
+					>
+						{#if showPassword}
+							<EyeIcon class="h-5 w-5" />
+						{:else}
+							<EyeOffIcon class="h-5 w-5" />
+						{/if}
+					</button>
+				</div>
+			</div>
+
+			<div class="mt-10">
+				<Button onclick={handleSubmit} disabled={isLoading} fullWidth {isLoading}>
+					Iniciar Sesión
+				</Button>
+			</div>
+		</form>
+
+		<!-- Divider -->
+		<div class="my-8 flex items-center">
+			<div class="h-px flex-1 bg-light-four/30 dark:bg-dark-four/30"></div>
+			<span class="px-4 text-sm text-light-four dark:text-dark-four">o</span>
+			<div class="h-px flex-1 bg-light-four/30 dark:bg-dark-four/30"></div>
+		</div>
+
+		<!-- Sign Up Link -->
+		<div class="text-center">
+			<p class="text-light-black/70 dark:text-dark-white/70">
+				Already have an account?
+				<button
+					type="button"
+					onclick={() => goto('/auth/sign-in')}
+					class="ml-1 font-bold text-light-tertiary transition-colors hover:text-light-tertiary_d dark:text-dark-tertiary dark:hover:text-dark-tertiary_d"
+				>
+					Sign In
+				</button>
+			</p>
+		</div>
+	</div>
+</div>
+<!-- <div
 	class="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4"
 >
 	<div class="w-full max-w-md">
 		<div class="rounded-2xl border border-white/20 bg-white/10 p-8 shadow-2xl backdrop-blur-lg">
-			<!-- Logo -->
+	
 			<div class="mb-8 flex justify-center">
 				<div
 					class="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-400 to-pink-400 shadow-lg transition-transform hover:scale-105"
@@ -46,7 +169,7 @@
 				</div>
 			</div>
 
-			<!-- Title -->
+
 			<h2 class="mb-2 text-center text-3xl font-bold text-white">
 				{isSignIn ? 'Welcome Back' : 'Create Account'}
 			</h2>
@@ -54,9 +177,9 @@
 				{isSignIn ? 'Sign in to continue' : 'Sign up to get started'}
 			</p>
 
-			<!-- Form Fields -->
+
 			<div class="space-y-6">
-				<!-- Email Input -->
+	
 				<div>
 					<label class="mb-2 block text-sm font-medium text-purple-100"> Email </label>
 					<div class="relative">
@@ -82,7 +205,7 @@
 					</div>
 				</div>
 
-				<!-- Password Input -->
+
 				<div>
 					<label class="mb-2 block text-sm font-medium text-purple-100"> Password </label>
 					<div class="relative">
@@ -139,7 +262,7 @@
 					</div>
 				</div>
 
-				<!-- Forgot Password -->
+				
 				{#if isSignIn}
 					<div class="flex justify-end">
 						<button
@@ -151,7 +274,7 @@
 					</div>
 				{/if}
 
-				<!-- Submit Button -->
+		
 				<button
 					on:click={handleSubmit}
 					class="w-full rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 py-3 font-semibold text-white shadow-lg transition-all hover:scale-[1.02] hover:from-purple-600 hover:to-pink-600"
@@ -160,7 +283,7 @@
 				</button>
 			</div>
 
-			<!-- Toggle Sign In/Sign Up -->
+
 			<div class="mt-6 text-center">
 				<p class="text-purple-200">
 					{isSignIn ? "Don't have an account? " : 'Already have an account? '}
@@ -174,9 +297,9 @@
 			</div>
 		</div>
 
-		<!-- Footer Note -->
+
 		<p class="mt-6 text-center text-xs text-purple-300/60">
 			Protected by enterprise-grade security
 		</p>
 	</div>
-</div>
+</div> -->
