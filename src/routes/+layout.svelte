@@ -9,7 +9,7 @@
 	const ogImage = `${baseUrl}/og-image.png`;
 	const title = 'CertHub - Crea Certificados Digitales personalizados';
 	const description =
-		'Con CertHub diseña, personaliza y genera certificados únicos para eventos, cursos, reconocimientos y más. 100% gratis y fácil de usar.';
+		'Con CertHub diseña, personaliza y genera certificados únicos para eventos, cursos, reconocimientos y más.';
 </script>
 
 <svelte:head>

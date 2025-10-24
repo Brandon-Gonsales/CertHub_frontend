@@ -130,7 +130,7 @@
 			</h1>
 			<p class="mx-auto mb-8 max-w-2xl text-xl text-light-black dark:text-dark-white">
 				Diseña, personaliza y genera certificados únicos para eventos, cursos, reconocimientos y
-				más. 100% gratis y fácil de usar.
+				más.
 			</p>
 			<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 				<Button onclick={navigateToLogin} variant="primary">
@@ -156,7 +156,7 @@
 							<div
 								class="my-6 border-b-2 border-light-tertiary pb-2 text-3xl font-bold text-light-black dark:border-dark-tertiary dark:text-dark-white"
 							>
-								[Tu Nombre Aquí]
+								[Escribe tu Nombre Aquí]
 							</div>
 							<p class="mt-4">Por su destacada participación</p>
 						</div>
