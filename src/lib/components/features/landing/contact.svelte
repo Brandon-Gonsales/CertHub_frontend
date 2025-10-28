@@ -33,7 +33,7 @@
 					</div>
 					<p class="mb-4 text-light-black dark:text-dark-white">
 						Av. Guapay 2260, Canal Cotoca<br />
-						Condominio Plaza Guapay, Piso 1 Of. 9<br />
+						Condominio Plaza Guapay, Piso 1 Oficina 9<br />
 						Santa Cruz, Bolivia
 					</p>
 					<a
@@ -72,11 +72,11 @@
 						Envíanos un correo y te responderemos en menos de 24 horas.
 					</p>
 					<a
-						href="mailto:DataHubAnalitycs@hotmail.com"
+						href="mailto:dataHubAnalitycs@hotmail.com"
 						class="inline-flex items-center gap-2 rounded-lg bg-light-tertiary px-4 py-2 text-sm font-medium text-light-primary transition-all hover:shadow-lg dark:bg-dark-tertiary dark:text-dark-primary"
 					>
 						<MailIcon class="h-5 w-5" />
-						DataHubAnalitycs@hotmail.com
+						dataHubAnalitycs@hotmail.com
 					</a>
 				</div>
 

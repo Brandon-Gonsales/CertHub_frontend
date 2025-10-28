@@ -109,7 +109,7 @@
 						imprimir y compartir digitalmente."
 				/>
 				<FeatureSectionCard
-					icon={DownloadIcon}
+					icon={SendIcon}
 					title="Envío Instantáneo"
 					description="Distribuye miles de certificados en cuestión de segundos. Ahorra horas de trabajo manual
 						con un proceso 100% automatizado."
