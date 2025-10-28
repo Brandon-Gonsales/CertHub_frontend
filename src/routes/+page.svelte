@@ -246,9 +246,10 @@
 						Nuestra Misión
 					</h4>
 					<p class="text-light-black dark:text-dark-white">
-						Democratizar el acceso a tecnologías de inteligencia artificial, proporcionando
-						soluciones innovadoras y accesibles que impulsen el crecimiento y la eficiencia de
-						nuestros clientes.
+						Proveer soluciones avanzadas de IA y análisis de datos, junto con servicios de
+						consultoría estratégica, desarrollo de plataformas y organización de eventos académicos
+						innovadores, garantizando atención personalizada, calidad superior y resultados
+						tangibles que impulsen el crecimiento y la competitividad de nuestros clientes.
 					</p>
 				</div>
 				<div class="rounded-xl border border-light-four p-6 dark:border-dark-four">
@@ -256,8 +257,10 @@
 						Nuestra Visión
 					</h4>
 					<p class="text-light-black dark:text-dark-white">
-						Ser líderes en innovación tecnológica, reconocidos por crear software inteligente que
-						transforma industrias y mejora la vida de las personas a través de la tecnología.
+						Ser el referente líder en consultoría de Inteligencia Artificial y Análisis de Datos en
+						Bolivia, impulsando la transformación digital y la toma de decisiones basada en datos en
+						PYME’s y Universidades, y fomentando la innovación a través de la educación y eventos
+						tecnológicos de alto impacto.
 					</p>
 				</div>
 			</div>
