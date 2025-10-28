@@ -18,7 +18,7 @@
 			>
 				<div class="flex items-center">
 					<div
-						class={`flex h-10 w-10 items-center justify-center rounded-full border-2 ${step >= stepItem.number ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-300 bg-white text-slate-400'}`}
+						class={`flex h-10 w-10 items-center justify-center rounded-full border-2 ${step >= stepItem.number ? 'border-light-secondary bg-light-secondary text-light-white dark:border-dark-secondary dark:bg-dark-secondary dark:text-dark-white' : 'border-light-four bg-light-primary text-light-four dark:border-dark-four dark:bg-dark-primary dark:text-dark-four'}`}
 					>
 						{#if step > stepItem.number}
 							<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

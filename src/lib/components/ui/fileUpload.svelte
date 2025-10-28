@@ -15,14 +15,15 @@
 </script>
 
 <div>
-	<label class="mb-2 block text-sm font-medium text-slate-700">{label}</label>
+	<label class="mb-2 block text-sm font-medium text-light-black dark:text-dark-white">{label}</label
+	>
 	<label
-		class="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-4 transition hover:border-blue-400 hover:bg-blue-50"
+		class="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-light-four px-6 py-4 transition hover:border-light-four_d dark:border-dark-four dark:hover:border-dark-four_d"
 	>
 		<div class="text-center">
 			{#if icon === 'image'}
 				<svg
-					class="mx-auto h-8 w-8 text-slate-400"
+					class="mx-auto h-8 w-8 text-light-tertiary dark:text-dark-tertiary"
 					fill="none"
 					stroke="currentColor"
 					viewBox="0 0 24 24"
@@ -49,11 +50,11 @@
 					/>
 				</svg>
 			{/if}
-			<p class="mt-2 text-sm text-slate-600">
+			<p class="mt-2 text-sm text-light-secondary dark:text-dark-secondary">
 				{fileName || 'Seleccionar archivo'}
 			</p>
 			{#if helpText}
-				<p class="mt-1 text-xs text-slate-500">{helpText}</p>
+				<p class="mt-1 text-xs text-light-secondary dark:text-dark-secondary">{helpText}</p>
 			{/if}
 		</div>
 		<input type="file" {accept} on:change={handleChange} class="hidden" />

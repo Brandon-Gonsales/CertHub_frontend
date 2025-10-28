@@ -1,7 +1,7 @@
 <script>
 	import { FacebookIcon, MailIcon, MapPinIcon, TikTokIcon, WhatsappIcon } from '$lib/icons/outline';
 	const googleMapsUrl =
-		'https://www.google.com/maps/place/Condominio+Plaza+Guapay/@-17.778021,-63.1621725,17z/data=!4m6!3m5!1s0x93f1e91ab47cc0b7:0xab7c542938a24498!8m2!3d-17.7780974!4d-63.1621712!16s%2Fg%2F11f676g8sk?hl=es&entry=ttu&g_ep=EgoyMDI1MTAyNi4wIKXMDSoASAFQAw%3D%3D';
+		'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3799.2908871232935!2d-63.1621725!3d-17.778021!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e91ab47cc0b7%3A0xab7c542938a24498!2sCondominio%20Plaza%20Guapay!5e0!3m2!1ses!2sbo!4v1761685579544!5m2!1ses!2sbo';
 </script>
 
 <section id="contact" class="px-4 py-16 sm:px-6 lg:px-8">

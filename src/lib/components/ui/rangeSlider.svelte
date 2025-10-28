@@ -16,9 +16,11 @@
 </script>
 
 <div>
-	<label class="mb-2 block text-sm font-medium text-slate-700">
+	<label class="mb-2 block text-sm font-medium text-light-black dark:text-dark-white">
 		{label}
-		<span class="ml-2 text-xs font-normal text-slate-500">{value}{unit}</span>
+		<span class="ml-2 text-xs font-normal text-light-secondary dark:text-dark-secondary"
+			>{value}{unit}</span
+		>
 	</label>
 	<input
 		type="range"
@@ -26,7 +28,7 @@
 		{max}
 		{value}
 		on:input={handleInput}
-		class="slider h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600"
+		class="slider h-2 w-full cursor-pointer appearance-none rounded-lg bg-light-four accent-light-tertiary dark:bg-dark-four dark:accent-dark-tertiary"
 	/>
 </div>
 

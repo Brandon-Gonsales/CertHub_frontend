@@ -5,6 +5,7 @@
 	import FileUpload from './fileUpload.svelte';
 	import RangeSlider from './rangeSlider.svelte';
 	import FontSelector from './fontSelector.svelte';
+	import Button from './button.svelte';
 
 	export let config: TemplateConfig;
 
@@ -59,14 +60,18 @@
 
 <div class="p-8">
 	<div class="mb-6">
-		<h2 class="text-lg font-semibold text-slate-900">Diseño de Plantilla</h2>
-		<p class="mt-1 text-sm text-slate-600">Sube tu certificado base y personaliza el texto</p>
+		<h2 class="text-lg font-semibold text-light-black dark:text-dark-white">Diseño de Plantilla</h2>
+		<p class="mt-1 text-sm text-light-black dark:text-dark-white">
+			Sube tu certificado base y personaliza el texto
+		</p>
 	</div>
 
 	<div class="grid gap-8 lg:grid-cols-2">
 		<!-- Preview -->
 		<div>
-			<label class="mb-3 block text-sm font-medium text-slate-700">Vista previa</label>
+			<label class="mb-3 block text-sm font-medium text-light-secondary dark:text-dark-secondary"
+				>Vista previa</label
+			>
 			<CertificatePreview
 				imageUrl={config.imageUrl}
 				overlayText={config.overlayText}
@@ -91,12 +96,14 @@
 
 			<!-- Text Input -->
 			<div>
-				<label class="mb-2 block text-sm font-medium text-slate-700">Texto del certificado</label>
+				<label class="mb-2 block text-sm font-medium text-light-black dark:text-dark-white"
+					>Texto del certificado</label
+				>
 				<input
 					type="text"
-					class="focus:ring-opacity-20 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+					class="focus:ring-opacity-20 w-full rounded-lg border border-light-four px-4 py-2.5 text-sm focus:border-light-tertiary focus:ring-2 focus:ring-light-tertiary focus:outline-none dark:border-dark-four dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary"
 					value={config.overlayText}
-					on:input={(e) => updateConfig({ overlayText: e.currentTarget.value })}
+					oninput={(e) => updateConfig({ overlayText: e.currentTarget.value })}
 					placeholder="Ingresa el texto a mostrar"
 				/>
 			</div>
@@ -130,20 +137,16 @@
 			/>
 
 			<!-- Actions -->
-			<div class="flex gap-3 pt-4">
-				<button
-					on:click={reset}
-					class="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
-				>
-					Restablecer
-				</button>
-				<button
-					on:click={handleNext}
+			<div class="flex justify-end gap-3 pt-4">
+				<Button onclick={reset} variant="secondary" aria-label="Restablecer">Restablecer</Button>
+				<Button
+					onclick={handleNext}
 					disabled={!config.imageUrl}
-					class="flex-1 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+					variant="primary"
+					aria-label="Continuar"
 				>
 					Continuar
-				</button>
+				</Button>
 			</div>
 		</div>
 	</div>

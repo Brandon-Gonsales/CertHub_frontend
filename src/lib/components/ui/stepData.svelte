@@ -5,6 +5,7 @@
 	import * as XLSX from 'xlsx';
 	import FileUpload from './fileUpload.svelte';
 	import DataTable from './dataTable.svelte';
+	import Button from './button.svelte';
 
 	export let data: ExcelData;
 
@@ -39,8 +40,10 @@
 
 <div class="p-8">
 	<div class="mb-6">
-		<h2 class="text-lg font-semibold text-slate-900">Importar Datos</h2>
-		<p class="mt-1 text-sm text-slate-600">Sube un archivo Excel con la lista de participantes</p>
+		<h2 class="text-lg font-semibold text-light-black dark:text-dark-white">Importar Datos</h2>
+		<p class="mt-1 text-sm text-light-black dark:text-dark-white">
+			Sube un archivo Excel con la lista de participantes
+		</p>
 	</div>
 
 	<div class="space-y-6">
@@ -61,27 +64,16 @@
 
 		<!-- Actions -->
 		<div class="flex gap-3 pt-4">
-			<button
-				on:click={() => dispatch('prev')}
-				class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
-			>
-				Atrás
-			</button>
+			<Button onclick={() => dispatch('prev')} variant="secondary">Atrás</Button>
 			<div class="flex-1"></div>
-			<button
-				on:click={() => dispatch('process')}
-				disabled={data.json.length === 0}
-				class="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+			<Button
+				onclick={() => dispatch('process')}
+				variant="secondary"
+				disabled={data.json.length === 0}>Procesar datos</Button
 			>
-				Procesar datos
-			</button>
-			<button
-				on:click={() => dispatch('next')}
-				disabled={data.json.length === 0}
-				class="rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+			<Button onclick={() => dispatch('next')} variant="primary" disabled={data.json.length === 0}
+				>Continuar</Button
 			>
-				Continuar
-			</button>
 		</div>
 	</div>
 </div>

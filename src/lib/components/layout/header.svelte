@@ -25,7 +25,9 @@
 	<nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 items-center justify-between">
 			<div class="flex items-center">
-				<FilePencilIcon class="h-8 w-8 text-light-tertiary dark:text-dark-tertiary" />
+				<div class="h-10 w-10">
+					<img src="/images/logo_empty_datahub.png" alt="" />
+				</div>
 				<span class="ml-2 text-xl font-bold text-light-secondary dark:text-dark-secondary"
 					>CertHub</span
 				>
