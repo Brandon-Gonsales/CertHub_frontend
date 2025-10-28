@@ -37,7 +37,7 @@
 						Santa Cruz, Bolivia
 					</p>
 					<a
-						href={googleMapsUrl}
+						href="https://maps.app.goo.gl/TCGu3NE2aN5ez8Pq9"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="inline-flex items-center gap-2 rounded-lg bg-light-tertiary px-4 py-2 text-sm font-medium text-light-primary transition-all hover:shadow-lg dark:bg-dark-tertiary dark:text-dark-primary"
