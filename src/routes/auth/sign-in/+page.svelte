@@ -132,7 +132,7 @@
 							Descarga al Instante
 						</h3>
 						<p class="text-sm text-light-primary/80 dark:text-dark-primary/80">
-							Exporta en alta calidad PDF o PNG
+							Exporta en alta calidad PDF
 						</p>
 					</div>
 				</div>

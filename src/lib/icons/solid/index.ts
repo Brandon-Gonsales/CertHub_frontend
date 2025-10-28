@@ -21,7 +21,6 @@ export { default as GiftIcon } from './giftIcon.svelte';
 export { default as HeadphonesIcon } from './headphonesIcon.svelte';
 export { default as CalendarIcon } from './calendarIcon.svelte';
 export { default as TruckIcon } from './truckIcon.svelte';
-export { default as BotsiIcon } from './botsiIcon.svelte';
 export { default as MoonIcon } from './moonIcon.svelte';
 export { default as SunIcon } from './sunIcon.svelte';
 export { default as LogoutIcon } from './logoutIcon.svelte';

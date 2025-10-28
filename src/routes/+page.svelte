@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { Contact, FeatureSectionCard } from '$lib/components/features/landing';
+	import { Footer, Header } from '$lib/components/layout';
 	import { Button } from '$lib/components/ui';
 	import CertificatePreviewDesign from '$lib/components/ui/certificatePreviewDesign.svelte';
 	import DataTable from '$lib/components/ui/dataTable.svelte';
@@ -9,8 +11,12 @@
 		ClipboardIcon,
 		DownloadIcon,
 		FacebookIcon,
+		FileTypeXlsIcon,
 		InstagramIcon,
 		LinkedinIcon,
+		MessageIcon,
+		SendIcon,
+		WhatsappIcon,
 		XIcon
 	} from '$lib/icons/outline';
 	import ChevronRightIcon from '$lib/icons/outline/chevronRightIcon.svelte';
@@ -20,107 +26,13 @@
 	import FilePencilIcon from '$lib/icons/solid/filePencilIcon.svelte';
 	import { themeStore } from '$lib/stores/themeStore';
 
-	let mobileMenuOpen = false;
-
-	const toggleMobileMenu = () => {
-		mobileMenuOpen = !mobileMenuOpen;
-	};
-
 	const navigateToLogin = () => {
 		goto('/auth/sign-in');
 	};
 </script>
 
 <div class="">
-	<header
-		class="fixed top-0 z-50 w-full border-b border-light-four bg-light-primary dark:border-dark-four dark:bg-dark-primary"
-	>
-		<nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-			<div class="flex h-16 items-center justify-between">
-				<div class="flex items-center">
-					<FilePencilIcon class="h-8 w-8 text-light-tertiary dark:text-dark-tertiary" />
-					<span class="ml-2 text-xl font-bold text-light-secondary dark:text-dark-secondary"
-						>CertHub</span
-					>
-				</div>
-
-				<!-- Desktop Navigation -->
-				<div class="hidden items-center space-x-8 md:flex">
-					<a
-						href="#features"
-						class="text-light-secondary hover:text-light-secondary_d dark:text-dark-secondary dark:hover:text-dark-secondary_d"
-						>Características</a
-					>
-					<a
-						href="#templates"
-						class="text-light-secondary hover:text-light-secondary_d dark:text-dark-secondary dark:hover:text-dark-secondary_d"
-						>Plantillas</a
-					>
-					<a
-						href="#about"
-						class="text-light-secondary hover:text-light-secondary_d dark:text-dark-secondary dark:hover:text-dark-secondary_d"
-						>Nosotros</a
-					>
-					<button
-						onclick={themeStore.toggleTheme}
-						class={`dark:hover:bg-dark-primary" relative rounded-full  p-2 text-light-black transition-all duration-300 hover:bg-light-primary_d dark:text-dark-white dark:hover:bg-dark-primary_d `}
-						aria-label={`Switch to ${$themeStore === 'light' ? 'light' : 'dark'} mode`}
-					>
-						<div class="relative flex h-6 w-6 items-center justify-center">
-							<SunIcon
-								class={`absolute h-5 w-5 transform transition-all duration-500 ${
-									$themeStore === 'light'
-										? 'scale-0 rotate-90 opacity-0'
-										: 'scale-100 rotate-0 opacity-100'
-								}`}
-							/>
-							<MoonIcon
-								class={`absolute h-5 w-5 transform transition-all duration-500 ${
-									$themeStore === 'light'
-										? 'scale-100 rotate-0 opacity-100'
-										: 'scale-0 -rotate-90 opacity-0'
-								}`}
-							/>
-						</div>
-					</button>
-					<Button onclick={navigateToLogin}>Iniciar Sesión</Button>
-				</div>
-
-				<!-- Mobile menu button -->
-				<button class="md:hidden" onclick={toggleMobileMenu}>
-					{#if mobileMenuOpen}
-						<XIcon class="h-6 w-6 text-light-tertiary dark:text-dark-tertiary" />
-					{:else}
-						<Menu2Icon class="h-6 w-6 text-light-tertiary dark:text-dark-tertiary" />
-					{/if}
-				</button>
-			</div>
-
-			<!-- Mobile Navigation -->
-			{#if mobileMenuOpen}
-				<div class="border-t border-light-four py-4 md:hidden dark:border-dark-four">
-					<div class="flex flex-col space-y-4">
-						<a
-							href="#features"
-							class="text-light-secondary hover:text-light-secondary_d dark:text-dark-secondary dark:hover:text-dark-secondary_d"
-							>Características</a
-						>
-						<a
-							href="#templates"
-							class="text-light-secondary hover:text-light-secondary_d dark:text-dark-secondary dark:hover:text-dark-secondary_d"
-							>Plantillas</a
-						>
-						<a
-							href="#about"
-							class="text-light-secondary hover:text-light-secondary_d dark:text-dark-secondary dark:hover:text-dark-secondary_d"
-							>Nosotros</a
-						>
-						<Button onclick={navigateToLogin}>Iniciar Sesión</Button>
-					</div>
-				</div>
-			{/if}
-		</nav>
-	</header>
+	<Header />
 
 	<!-- Hero Section -->
 	<section class="px-4 pt-32 pb-20 sm:px-6 lg:px-8">
@@ -139,31 +51,6 @@
 					{#snippet rightIcon()}<ChevronRightIcon class="ml-2 h-6 w-6" />{/snippet}
 				</Button>
 			</div>
-
-			<!-- <div class="relative mt-16">
-				<div class="mx-auto max-w-5xl">
-					<div
-						class="rounded-2xl border-4 border-light-tertiary bg-gradient-to-br from-light-primary via-light-primary_d to-light-four p-8 shadow-2xl dark:border-dark-tertiary dark:from-dark-primary dark:via-dark-primary_d dark:to-dark-four"
-					>
-						<div class="mb-4 text-center">
-							<div
-								class="font-serif text-4xl font-bold text-light-tertiary dark:text-dark-tertiary"
-							>
-								Certificado de Reconocimiento
-							</div>
-						</div>
-						<div class="my-8 text-center text-lg text-light-secondary dark:text-dark-secondary">
-							<p class="mb-4">Este certificado se otorga a</p>
-							<div
-								class="my-6 border-b-2 border-light-tertiary pb-2 text-3xl font-bold text-light-black dark:border-dark-tertiary dark:text-dark-white"
-							>
-								[Escribe tu Nombre Aquí]
-							</div>
-							<p class="mt-4">Por su destacada participación</p>
-						</div>
-					</div>
-				</div>
-			</div> -->
 			<CertificatePreviewDesign />
 		</div>
 	</section>
@@ -181,7 +68,7 @@
 			</div>
 
 			<div class="grid gap-8 md:grid-cols-3">
-				<div
+				<!-- <div
 					class="rounded-xl border border-light-four p-8 transition-shadow hover:shadow-lg dark:border-dark-four"
 				>
 					<div
@@ -190,93 +77,48 @@
 						<PaletteIcon class="h-6 w-6 text-light-primary dark:text-dark-primary" />
 					</div>
 					<h3 class="mb-3 text-xl font-bold text-light-black dark:text-dark-white">
-						Diseño Personalizable
+						Crea tu Diseño
 					</h3>
 					<p class="text-light-black dark:text-dark-white">
-						Personaliza colores, fuentes, logos y diseños. Cada certificado es único y refleja tu
-						estilo.
+						Personaliza fuentes, tamaños, posición, tipografía del nombre y diseños. Cada
+						certificado es único y refleja tu estilo.
 					</p>
-				</div>
-
-				<div
-					class="rounded-xl border border-light-four p-8 transition-shadow hover:shadow-lg dark:border-dark-four"
-				>
-					<div
-						class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-light-tertiary dark:bg-dark-tertiary"
-					>
-						<BoltIcon class="h-6 w-6 text-light-primary dark:text-dark-primary" />
-					</div>
-					<h3 class="mb-3 text-xl font-bold text-light-black dark:text-dark-white">
-						Generación Instantánea
-					</h3>
-					<p class="text-light-black dark:text-dark-white">
-						Crea y descarga tus certificados en segundos. Sin complicaciones, sin esperas.
-					</p>
-				</div>
-
-				<div
-					class="rounded-xl border border-light-four p-8 transition-shadow hover:shadow-lg dark:border-dark-four"
-				>
-					<div
-						class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-light-tertiary dark:bg-dark-tertiary"
-					>
-						<DownloadIcon class="h-6 w-6 text-light-primary dark:text-dark-primary" />
-					</div>
-					<h3 class="mb-3 text-xl font-bold text-light-black dark:text-dark-white">
-						Descarga en Alta Calidad
-					</h3>
-					<p class="text-light-black dark:text-dark-white">
-						Exporta en PDF o PNG con calidad profesional lista para imprimir o compartir
-						digitalmente.
-					</p>
-				</div>
-
-				<div
-					class="rounded-xl border border-light-four p-8 transition-shadow hover:shadow-lg dark:border-dark-four"
-				>
-					<div
-						class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-light-tertiary dark:bg-dark-tertiary"
-					>
-						<ClipboardIcon class="h-6 w-6 text-light-primary dark:text-dark-primary" />
-					</div>
-					<h3 class="mb-3 text-xl font-bold text-light-black dark:text-dark-white">
-						Plantillas Prediseñadas
-					</h3>
-					<p class="text-light-black dark:text-dark-white">
-						Elige entre múltiples plantillas profesionales para diferentes ocasiones y
-						personalízalas a tu gusto.
-					</p>
-				</div>
-
-				<div
-					class="rounded-xl border border-light-four p-8 transition-shadow hover:shadow-lg dark:border-dark-four"
-				>
-					<div
-						class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-light-tertiary dark:bg-dark-tertiary"
-					>
-						<LockIcon class="h-6 w-6 text-light-primary dark:text-dark-primary" />
-					</div>
-					<h3 class="mb-3 text-xl font-bold text-light-black dark:text-dark-white">100% Gratis</h3>
-					<p class="text-light-black dark:text-dark-white">
-						Todas las funciones disponibles sin costo. Sin límites, sin anuncios, sin sorpresas.
-					</p>
-				</div>
-
-				<div
-					class="rounded-xl border border-light-four p-8 transition-shadow hover:shadow-lg dark:border-dark-four"
-				>
-					<div
-						class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-light-tertiary dark:bg-dark-tertiary"
-					>
-						<DownloadIcon class="h-6 w-6 text-light-primary dark:text-dark-primary" />
-					</div>
-					<h3 class="mb-3 text-xl font-bold text-light-black dark:text-dark-white">
-						Guarda tus Diseños
-					</h3>
-					<p class="text-light-black dark:text-dark-white">
-						Guarda tus certificados favoritos y reutilízalos cuantas veces necesites.
-					</p>
-				</div>
+				</div> -->
+				<FeatureSectionCard
+					icon={PaletteIcon}
+					title="Crea tu Diseño"
+					description="Personaliza fuentes, tamaños, posición, tipografía del nombre y diseños. Cada
+						certificado es único y refleja tu estilo."
+				/>
+				<FeatureSectionCard
+					icon={FileTypeXlsIcon}
+					title="Sube tu lista"
+					description="Carga una hoja de Excel con nombres y correos electrónicos. El sistema generará
+						automáticamente un certificado único para cada estudiante."
+				/>
+				<FeatureSectionCard
+					icon={MessageIcon}
+					title="Personaliza tu mensaje"
+					description="Redacta tu mensaje y envíalo a todos tus destinatarios desde la plataforma. Cada
+						destinatario recibirá su código único y un link seguro para descargar su certificado."
+				/>
+				<FeatureSectionCard
+					icon={DownloadIcon}
+					title="Descarga en Alta Calidad"
+					description="Descarga tu certificado en formato “PDF” con alta calidad profesional, lista para
+						imprimir y compartir digitalmente."
+				/>
+				<FeatureSectionCard
+					icon={DownloadIcon}
+					title="Envío Instantáneo"
+					description="Distribuye miles de certificados en cuestión de segundos. Ahorra horas de trabajo manual
+						con un proceso 100% automatizado."
+				/>
+				<FeatureSectionCard
+					icon={LockIcon}
+					title="100% Segura"
+					description="Tu información y la de tus estudiantes está protegida y resguardada."
+				/>
 			</div>
 		</div>
 	</section>
@@ -289,11 +131,9 @@
 		<div class="mx-auto max-w-7xl">
 			<div class="mb-16 text-center">
 				<h2 class="mb-4 text-4xl font-bold text-light-black dark:text-dark-white">
-					Plantillas para cada ocasión
+					Certificados para cada ocasión.
 				</h2>
-				<p class="text-xl text-light-black dark:text-dark-white">
-					Comienza con una plantilla y hazla tuya
-				</p>
+				<p class="text-xl text-light-black dark:text-dark-white">Gestiona tus certificados.</p>
 			</div>
 
 			<div class="grid gap-8 md:grid-cols-3">
@@ -303,11 +143,11 @@
 					<div
 						class="mb-4 flex h-48 items-center justify-center rounded-lg border-4 border-light-tertiary bg-gradient-to-br from-light-primary to-light-four dark:border-dark-tertiary dark:from-dark-primary dark:to-dark-four"
 					>
-						<span class="text-3xl font-bold text-light-tertiary dark:text-dark-tertiary">🎓</span>
+						<span class="text-9xl font-bold text-light-tertiary dark:text-dark-tertiary">🎓</span>
 					</div>
 					<h3 class="mb-2 text-xl font-bold text-light-black dark:text-dark-white">Académico</h3>
 					<p class="text-light-black dark:text-dark-white">
-						Certificados para cursos, capacitaciones y diplomas
+						Certificados para cursos, talleres, capacitaciones y diplomas.
 					</p>
 				</div>
 
@@ -317,13 +157,13 @@
 					<div
 						class="mb-4 flex h-48 items-center justify-center rounded-lg border-4 border-light-tertiary bg-gradient-to-br from-light-primary to-light-four dark:border-dark-tertiary dark:from-dark-primary dark:to-dark-four"
 					>
-						<span class="text-3xl font-bold text-light-tertiary dark:text-dark-tertiary">🏆</span>
+						<span class="text-9xl font-bold text-light-tertiary dark:text-dark-tertiary">🏆</span>
 					</div>
 					<h3 class="mb-2 text-xl font-bold text-light-black dark:text-dark-white">
 						Reconocimiento
 					</h3>
 					<p class="text-light-black dark:text-dark-white">
-						Premiaciones, logros y méritos especiales
+						Premiaciones, logros y méritos especiales.
 					</p>
 				</div>
 
@@ -333,11 +173,11 @@
 					<div
 						class="mb-4 flex h-48 items-center justify-center rounded-lg border-4 border-light-tertiary bg-gradient-to-br from-light-primary to-light-four dark:border-dark-tertiary dark:from-dark-primary dark:to-dark-four"
 					>
-						<span class="text-3xl font-bold text-light-tertiary dark:text-dark-tertiary">🎉</span>
+						<span class="text-9xl font-bold text-light-tertiary dark:text-dark-tertiary">🎉</span>
 					</div>
 					<h3 class="mb-2 text-xl font-bold text-light-black dark:text-dark-white">Eventos</h3>
 					<p class="text-light-black dark:text-dark-white">
-						Participación en conferencias, talleres y seminarios
+						Participación en conferencias, talleres y seminarios.
 					</p>
 				</div>
 			</div>
@@ -347,7 +187,7 @@
 	<!-- About Section -->
 	<section id="about" class="relative px-4 py-20 sm:px-6 lg:px-8">
 		<div
-			class="absolute inset-0 z-0 bg-contain bg-center bg-no-repeat opacity-20"
+			class="absolute inset-0 -z-10 bg-contain bg-center bg-no-repeat opacity-20"
 			style="background-image: url('/images/logo_empty_datahub.png');"
 		></div>
 		<div class="mx-auto max-w-7xl">
@@ -421,42 +261,9 @@
 					</p>
 				</div>
 			</div>
-
-			<!-- Social Media Section -->
-			<div
-				class="rounded-xl border border-light-four bg-light-primary p-8 dark:border-dark-four dark:bg-dark-primary"
-			>
-				<h4 class="mb-6 text-center text-2xl font-bold text-light-black dark:text-dark-white">
-					Síguenos en Redes Sociales
-				</h4>
-				<div class="flex flex-wrap justify-center gap-6">
-					<a
-						href="https://www.facebook.com/datahubanalyticsbo?locale=es_LA"
-						target="_blank"
-						class="flex items-center gap-2 rounded-lg border border-light-four bg-light-primary_d px-6 py-3 transition-all hover:shadow-lg dark:border-dark-four dark:bg-dark-primary_d"
-					>
-						<FacebookIcon class="h-6 w-6 text-light-secondary dark:text-dark-secondary" />
-						<span class="text-light-secondary dark:text-dark-secondary">Facebook</span>
-					</a>
-
-					<a
-						href="#"
-						class="flex items-center gap-2 rounded-lg border border-light-four bg-light-primary_d px-6 py-3 transition-all hover:shadow-lg dark:border-dark-four dark:bg-dark-primary_d"
-					>
-						<InstagramIcon class="h-6 w-6 text-light-secondary dark:text-dark-secondary" />
-						<span class="text-light-secondary dark:text-dark-secondary">Instagram</span>
-					</a>
-					<a
-						href="#"
-						class="flex items-center gap-2 rounded-lg border border-light-four bg-light-primary_d px-6 py-3 transition-all hover:shadow-lg dark:border-dark-four dark:bg-dark-primary_d"
-					>
-						<LinkedinIcon class="h-6 w-6 text-light-secondary dark:text-dark-secondary" />
-						<span class="text-light-secondary dark:text-dark-secondary">LinkedIn</span>
-					</a>
-				</div>
-			</div>
 		</div>
 	</section>
+	<Contact />
 
 	<!-- CTA Section -->
 	<section
@@ -479,51 +286,5 @@
 	</section>
 
 	<!-- Footer -->
-	<footer
-		class="bg-gradient-to-r from-light-tertiary_d to-light-tertiary px-4 py-12 sm:px-6 lg:px-8 dark:from-dark-tertiary_d dark:to-dark-tertiary"
-	>
-		<div class="mx-auto max-w-7xl">
-			<div class="mb-8 grid gap-8 md:grid-cols-4">
-				<div>
-					<div class="mb-4 flex items-center">
-						<FilePencilIcon class="h-6 w-6 text-light-primary dark:text-dark-primary" />
-						<span class="ml-2 text-xl font-bold text-light-primary dark:text-dark-primary"
-							>CertHub</span
-						>
-					</div>
-					<p class="text-light-primary_d dark:text-dark-primary_d">
-						Generador de certificados profesionales
-					</p>
-				</div>
-				<div>
-					<h4 class="mb-4 font-bold text-light-primary dark:text-dark-primary">Producto</h4>
-					<ul class="space-y-2 text-light-primary_d dark:text-dark-primary_d">
-						<li><a href="#features" class="">Características</a></li>
-						<li><a href="#templates" class="">Plantillas</a></li>
-					</ul>
-				</div>
-				<div>
-					<h4 class="mb-4 font-bold text-light-primary dark:text-dark-primary">Empresa</h4>
-					<ul class="space-y-2 text-light-primary_d dark:text-dark-primary_d">
-						<li><a href="#about" class="">Sobre Nosotros</a></li>
-						<li><a href="#" class="">Blog</a></li>
-						<li><a href="#" class="">Contacto</a></li>
-					</ul>
-				</div>
-				<div>
-					<h4 class="mb-4 font-bold text-light-primary dark:text-dark-primary">Legal</h4>
-					<ul class="space-y-2 text-light-primary_d dark:text-dark-primary_d">
-						<li><a href="#" class="">Privacidad</a></li>
-						<li><a href="#" class="">Términos</a></li>
-						<li><a href="#" class="">Cookies</a></li>
-					</ul>
-				</div>
-			</div>
-			<div
-				class="border-t border-light-four pt-8 text-center text-light-primary_d dark:border-dark-four dark:text-dark-primary_d"
-			>
-				<p>&copy; 2025 DataHub Analytics. Todos los derechos reservados.</p>
-			</div>
-		</div>
-	</footer>
+	<Footer />
 </div>

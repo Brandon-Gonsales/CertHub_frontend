@@ -52,3 +52,6 @@ export { default as KeyIcon } from './keyIcon.svelte';
 export { default as CopyIcon } from './copyIcon.svelte';
 export { default as UserIcon } from './userIcon.svelte';
 export { default as LinkedinIcon } from './linkedinIcon.svelte';
+export { default as FileTypeXlsIcon } from './fileTypeXlsIcon.svelte';
+export { default as MessageIcon } from './messageIcon.svelte';
+export { default as SendIcon } from './sendIcon.svelte';
