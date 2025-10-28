@@ -34,15 +34,19 @@
 						{/if}
 					</div>
 					<div class="ml-3">
-						<p class="text-sm font-medium text-slate-900">{stepItem.title}</p>
-						<p class="text-xs text-slate-500">{stepItem.description}</p>
+						<p class="text-sm font-medium text-light-black dark:text-dark-white">
+							{stepItem.title}
+						</p>
+						<p class="text-xs text-light-secondary dark:text-dark-secondary">
+							{stepItem.description}
+						</p>
 					</div>
 				</div>
 			</div>
 
 			{#if index < steps.length - 1}
 				<div
-					class={`h-0.5 flex-1 ${step >= stepItem.number + 1 ? 'bg-blue-600' : 'bg-slate-300'}`}
+					class={`h-0.5 flex-1 ${step >= stepItem.number + 1 ? 'bg-light-tertiary dark:bg-dark-tertiary' : 'bg-light-four dark:bg-dark-four'}`}
 				></div>
 			{/if}
 		{/each}

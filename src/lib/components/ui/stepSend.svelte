@@ -24,7 +24,7 @@
 			>
 			<textarea
 				rows="10"
-				class="focus:ring-opacity-20 dark:focus:ring-opacity-20 w-full rounded-lg border border-light-four px-4 py-3 text-sm focus:border-light-tertiary focus:ring-2 focus:ring-light-tertiary dark:border-dark-four dark:text-dark-white dark:focus:border-dark-tertiary dark:focus:ring-2 dark:focus:ring-dark-tertiary dark:focus:outline-none"
+				class="focus:ring-opacity-20 dark:focus:ring-opacity-20 w-full rounded-lg border border-light-four bg-light-primary px-4 py-3 text-sm focus:border-light-tertiary focus:ring-2 focus:ring-light-tertiary dark:border-dark-four dark:bg-dark-primary dark:text-dark-white dark:focus:border-dark-tertiary dark:focus:ring-2 dark:focus:ring-dark-tertiary dark:focus:outline-none"
 				bind:value={message}
 				placeholder="Escribe aquí el mensaje que acompañará el envío de los certificados..."
 			></textarea>

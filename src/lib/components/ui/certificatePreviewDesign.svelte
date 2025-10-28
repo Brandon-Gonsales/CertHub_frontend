@@ -2,30 +2,33 @@
 	let currentNameIndex = 0;
 	const names = ['Brandon Lara Paz', 'Rodrigo Herrera', 'Kevin Soto', 'Katherine Meza'];
 
-	// Cambiar nombre cada 4 segundos
 	setInterval(() => {
 		currentNameIndex = (currentNameIndex + 1) % names.length;
-	}, 4000);
+	}, 3000);
+
+	const fechaActual = new Date();
+
+	const fechaFormateada = fechaActual.toLocaleDateString('es-ES', {
+		day: '2-digit',
+		month: 'long',
+		year: 'numeric'
+	});
 </script>
 
 <div class="relative mt-16">
 	<div class="mx-auto max-w-5xl px-4">
-		<!-- Borde exterior con gradiente -->
 		<div
 			class="rounded-2xl bg-gradient-to-br from-light-tertiary via-light-secondary to-light-secondary_d p-1 shadow-2xl dark:from-dark-tertiary dark:via-dark-secondary dark:to-dark-secondary_d"
 		>
-			<!-- Contenedor principal blanco -->
 			<div
 				class="relative overflow-hidden rounded-[15px] bg-gradient-to-br from-white via-light-primary to-light-primary_d p-12 dark:from-dark-surface dark:via-dark-primary dark:to-dark-primary_d"
 			>
-				<!-- Marca de agua -->
 				<div
 					class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-45deg] text-[200px] font-bold text-light-tertiary opacity-[0.02] select-none dark:text-dark-tertiary"
 				>
 					DataHub
 				</div>
 
-				<!-- Ornamentos de esquina -->
 				<div
 					class="absolute top-5 left-5 h-12 w-12 border-t-2 border-l-2 border-light-tertiary/40 dark:border-dark-tertiary/40"
 				></div>
@@ -39,7 +42,6 @@
 					class="absolute right-5 bottom-5 h-12 w-12 border-r-2 border-b-2 border-light-tertiary/40 dark:border-dark-tertiary/40"
 				></div>
 
-				<!-- Ornamento superior -->
 				<div class="mb-8 flex justify-center">
 					<div
 						class="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-light-tertiary to-light-secondary shadow-lg dark:from-dark-tertiary dark:to-dark-secondary"
@@ -48,7 +50,6 @@
 					</div>
 				</div>
 
-				<!-- Título -->
 				<div class="mb-8 text-center">
 					<h2 class="mb-3 text-5xl font-bold text-light-tertiary dark:text-dark-tertiary">
 						Certificado de Especialización
@@ -58,18 +59,15 @@
 					</div>
 				</div>
 
-				<!-- Línea divisoria -->
 				<div
 					class="mb-8 h-0.5 bg-gradient-to-r from-transparent via-light-tertiary to-transparent opacity-50 dark:via-dark-tertiary"
 				></div>
 
-				<!-- Cuerpo del certificado -->
 				<div class="relative mb-8 text-center">
 					<p class="mb-6 text-xl text-light-secondary_d dark:text-dark-secondary_d">
 						Se otorga el presente reconocimiento a
 					</p>
 
-					<!-- Carrusel de nombres -->
 					<div class="relative mb-8 flex h-20 items-center justify-center overflow-hidden">
 						{#each names as name, i}
 							<div
@@ -114,7 +112,7 @@
 							Fecha de emisión
 						</p>
 						<p class="text-lg font-semibold text-light-tertiary dark:text-dark-tertiary">
-							24 de Octubre, 2025
+							{fechaFormateada}
 						</p>
 					</div>
 
@@ -139,7 +137,6 @@
 						></div>
 					</div>
 
-					<!-- Firma -->
 					<div class="text-center">
 						<div class="mb-2 h-0.5 w-48 bg-light-tertiary dark:bg-dark-tertiary"></div>
 						<p class="font-semibold text-light-tertiary dark:text-dark-tertiary">
