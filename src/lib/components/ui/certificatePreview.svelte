@@ -9,6 +9,7 @@
 	export let fontFamily: string;
 	export let containerElement: HTMLDivElement | undefined = undefined;
 	export let containerHeight = 0;
+	export let ci: string = '9857626';
 
 	let container: HTMLDivElement;
 
@@ -52,4 +53,5 @@
 			<p class="text-sm text-light-secondary dark:text-dark-secondary">No hay imagen cargada</p>
 		</div>
 	{/if}
+	<div class="absolute right-3 bottom-3 text-light-black dark:text-dark-white">{ci}</div>
 </div>

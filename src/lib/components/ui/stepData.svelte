@@ -8,6 +8,7 @@
 	import Button from './button.svelte';
 
 	export let data: ExcelData;
+	export let isLoadingStep2: boolean;
 
 	const dispatch = createEventDispatcher();
 
@@ -64,15 +65,21 @@
 
 		<!-- Actions -->
 		<div class="flex gap-3 pt-4">
-			<Button onclick={() => dispatch('prev')} variant="secondary">Atrás</Button>
+			<Button onclick={() => dispatch('prev')} disabled={isLoadingStep2} variant="secondary"
+				>Atrás</Button
+			>
 			<div class="flex-1"></div>
 			<Button
 				onclick={() => dispatch('process')}
 				variant="secondary"
-				disabled={data.json.length === 0}>Procesar datos</Button
+				loading={isLoadingStep2}
+				disabled={data.json.length === 0 || isLoadingStep2}>Procesar datos</Button
 			>
-			<Button onclick={() => dispatch('next')} variant="primary" disabled={data.json.length === 0}
-				>Continuar</Button
+			<Button
+				onclick={() => dispatch('next')}
+				variant="primary"
+				disabled={data.json.length === 0 || isLoadingStep2}
+				loading={isLoadingStep2}>Continuar</Button
 			>
 		</div>
 	</div>

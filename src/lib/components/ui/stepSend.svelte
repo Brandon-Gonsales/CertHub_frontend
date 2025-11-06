@@ -5,6 +5,7 @@
 	export let message: string;
 	export let templateFileName: string | undefined;
 	export let participantCount: number;
+	export let isLoadingStep3: boolean;
 
 	const dispatch = createEventDispatcher();
 </script>
@@ -64,10 +65,15 @@
 
 		<!-- Actions -->
 		<div class="flex gap-3 pt-4">
-			<Button onclick={() => dispatch('prev')} variant="secondary">Atrás</Button>
+			<Button onclick={() => dispatch('prev')} disabled={isLoadingStep3} variant="secondary"
+				>Atrás</Button
+			>
 			<div class="flex-1"></div>
-			<Button onclick={() => dispatch('send')} variant="primary" disabled={!message.trim()}
-				>Enviar certificados</Button
+			<Button
+				onclick={() => dispatch('send')}
+				variant="primary"
+				disabled={!message.trim() || isLoadingStep3}
+				loading={isLoadingStep3}>Enviar certificados</Button
 			>
 		</div>
 	</div>

@@ -8,6 +8,7 @@
 	import Button from './button.svelte';
 
 	export let config: TemplateConfig;
+	export let isLoadingStep1: boolean;
 
 	const dispatch = createEventDispatcher();
 
@@ -138,12 +139,18 @@
 
 			<!-- Actions -->
 			<div class="flex justify-end gap-3 pt-4">
-				<Button onclick={reset} variant="secondary" aria-label="Restablecer">Restablecer</Button>
+				<Button
+					onclick={reset}
+					variant="secondary"
+					disabled={isLoadingStep1}
+					aria-label="Restablecer">Restablecer</Button
+				>
 				<Button
 					onclick={handleNext}
-					disabled={!config.imageUrl}
+					disabled={!config.imageUrl || isLoadingStep1}
 					variant="primary"
 					aria-label="Continuar"
+					loading={isLoadingStep1}
 				>
 					Continuar
 				</Button>

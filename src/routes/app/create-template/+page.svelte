@@ -4,6 +4,7 @@
 	import StepData from '$lib/components/ui/stepData.svelte';
 	import StepDesign from '$lib/components/ui/stepDesign.svelte';
 	import StepSend from '$lib/components/ui/stepSend.svelte';
+	import { API_CONFIG } from '$lib/config/api.config';
 	import { PlusIcon } from '$lib/icons/outline';
 	import type { TemplatePayload } from '$lib/interfaces/compaing.interface';
 	import type { ExcelData, TemplateConfig } from '$lib/interfaces/createTemplatee.interface';
@@ -18,6 +19,7 @@
 	let campaignId: string | null = null;
 	let isUpdatingTemplateStep1 = false;
 	let isUpdatingTemplateStep2 = false;
+	let isUpdatingTemplateStep3 = false;
 
 	// Template configuration
 	let templateConfig: TemplateConfig = {
@@ -65,7 +67,7 @@
 	async function createCampaign() {
 		isCreatingCampaign = true;
 		try {
-			const response = await fetch('https://certhub-backend.onrender.com/campaigns/', {
+			const response = await fetch(`${API_CONFIG.BASE_URL}/campaigns/`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -131,8 +133,8 @@
 			alert('No se ha creado una campaña. Por favor, crea una campaña primero.');
 			return;
 		}
+		isUpdatingTemplateStep1 = true;
 		try {
-			isUpdatingTemplateStep1 = true;
 			compaingData.x = 0;
 			compaingData.y = 60;
 			compaingData.font_size = templateConfig.fontSize;
@@ -158,8 +160,8 @@
 			alert('No se ha creado una campaña. Por favor, crea una campaña primero.');
 			return;
 		}
+		isUpdatingTemplateStep2 = true;
 		try {
-			isUpdatingTemplateStep2 = true;
 			compaingData.x = 0;
 			compaingData.y = 60;
 			compaingData.font_size = templateConfig.fontSize;
@@ -206,6 +208,7 @@
 
 	function handleSendMessage() {
 		try {
+			isUpdatingTemplateStep3 = true;
 			const responseCampaignMessage = campaignService.campaignMessage(
 				idcampañaStore.get() as string,
 				message
@@ -221,6 +224,8 @@
 		} catch (error) {
 			console.error('Error al enviar el mensaje:', error);
 			alert('Error al enviar el mensaje. Por favor, intenta nuevamente.');
+		} finally {
+			isUpdatingTemplateStep3 = false;
 		}
 	}
 </script>
@@ -275,7 +280,6 @@
 			</div>
 		{:else}
 			<ProgressSteps {step} />
-
 			<!-- Content Card -->
 			<div
 				class="rounded-lg border border-light-four bg-light-primary shadow-sm dark:border-dark-four dark:bg-dark-primary"
@@ -285,6 +289,7 @@
 						config={templateConfig}
 						on:update={(e) => handleTemplateUpdate(e.detail)}
 						on:next={updateTemplate}
+						isLoadingStep1={isUpdatingTemplateStep1}
 					/>
 				{:else if step === 2}
 					<StepData
@@ -293,6 +298,7 @@
 						on:prev={goPrev}
 						on:next={updateTemplateStep2Students}
 						on:process={handleSendExcel}
+						isLoadingStep2={isUpdatingTemplateStep2}
 					/>
 				{:else if step === 3}
 					<StepSend
@@ -301,6 +307,7 @@
 						participantCount={excelData.json.length}
 						on:prev={goPrev}
 						on:send={handleSendMessage}
+						isLoadingStep3={isUpdatingTemplateStep3}
 					/>
 				{/if}
 			</div>
