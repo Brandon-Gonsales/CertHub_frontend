@@ -1,4 +1,5 @@
 <script lang="ts">
+	//create-template.svelte
 	import { Button } from '$lib/components/ui';
 	import ProgressSteps from '$lib/components/ui/progressSteps.svelte';
 	import StepData from '$lib/components/ui/stepData.svelte';
@@ -27,8 +28,12 @@
 		imageUrl: null,
 		overlayText: 'Nombre del participante',
 		yOffset: 0,
+		xOffset: 0,
 		fontSize: 48,
-		fontIndex: 0
+		fontIndex: 0,
+		ci: '9857626',
+		ciXOffset: 0,
+		ciYOffset: 0
 	};
 
 	const compaingData: TemplatePayload = {
@@ -112,8 +117,12 @@
 			imageUrl: null,
 			overlayText: 'Nombre del participante',
 			yOffset: 0,
+			xOffset: 0,
 			fontSize: 48,
-			fontIndex: 0
+			fontIndex: 0,
+			ci: '9857626',
+			ciXOffset: 0,
+			ciYOffset: 0
 		};
 
 		// Reset excel data
@@ -262,7 +271,6 @@
 					>
 						<PlusIcon class="h-6 w-6 text-light-tertiary dark:text-dark-tertiary" />
 					</div>
-
 					<h2 class="mb-2 text-2xl font-semibold text-light-black dark:text-dark-white">
 						Crear Nueva Campaña
 					</h2>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	//stepDesign.svelte
 	import { FONTS, type TemplateConfig } from '$lib/interfaces/createTemplatee.interface';
 	import { createEventDispatcher } from 'svelte';
 	import CertificatePreview from './certificatePreview.svelte';
@@ -14,9 +15,10 @@
 
 	let imageContainer: HTMLDivElement;
 	let containerHeight = 0;
+	let containerWidth = 0;
 
 	function handleImageUpload(e: CustomEvent) {
-		const target = e.detail as HTMLInputElement; // e.detail ahora contiene el target
+		const target = e.detail as HTMLInputElement;
 		const file = target.files?.[0];
 		if (!file) return;
 
@@ -46,7 +48,15 @@
 	}
 
 	function reset() {
-		updateConfig({ yOffset: 0, fontSize: 48, fontIndex: 0 });
+		updateConfig({
+			yOffset: 0,
+			xOffset: 0,
+			fontSize: 48,
+			fontIndex: 0,
+			ci: '9857626',
+			ciXOffset: 0,
+			ciYOffset: 0
+		});
 	}
 
 	function handleNext() {
@@ -57,6 +67,10 @@
 
 	// Calculate max Y offset based on container height
 	$: maxYOffset = containerHeight > 0 ? Math.floor(containerHeight / 2) : 200;
+	$: maxXOffset = containerWidth > 0 ? Math.floor(containerWidth / 2) : 200;
+	$: if (imageContainer) {
+		containerWidth = imageContainer.clientWidth;
+	}
 </script>
 
 <div class="p-8">
@@ -77,8 +91,12 @@
 				imageUrl={config.imageUrl}
 				overlayText={config.overlayText}
 				yOffset={config.yOffset}
+				xOffset={config.xOffset}
 				fontSize={config.fontSize}
 				fontFamily={FONTS[config.fontIndex]}
+				ci={config.ci}
+				ciXOffset={config.ciXOffset}
+				ciYOffset={config.ciYOffset}
 				bind:containerElement={imageContainer}
 				bind:containerHeight
 			/>
@@ -109,7 +127,20 @@
 				/>
 			</div>
 
-			<!-- Position Control -->
+			<div>
+				<label class="mb-2 block text-sm font-medium text-light-black dark:text-dark-white"
+					>Número de CI</label
+				>
+				<input
+					type="text"
+					class="focus:ring-opacity-20 w-full rounded-lg border border-light-four px-4 py-2.5 text-sm focus:border-light-tertiary focus:ring-2 focus:ring-light-tertiary focus:outline-none dark:border-dark-four dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary"
+					value={config.ci}
+					oninput={(e) => updateConfig({ ci: e.currentTarget.value })}
+					placeholder="Ingresa el número de CI"
+				/>
+			</div>
+
+			<!-- Position Control  Vertical (Texto nombre) -->
 			<RangeSlider
 				label="Posición vertical"
 				min={-maxYOffset}
@@ -117,6 +148,36 @@
 				value={config.yOffset}
 				unit="px"
 				on:input={(e) => updateConfig({ yOffset: parseInt(e.detail) })}
+			/>
+
+			<!-- Position Control Horizontal (Texto nombre) -->
+			<RangeSlider
+				label="Posición horizontal del texto"
+				min={-maxXOffset}
+				max={maxXOffset}
+				value={config.xOffset}
+				unit="px"
+				on:input={(e) => updateConfig({ xOffset: parseInt(e.detail) })}
+			/>
+
+			<!-- Position Control Horizontal (CI) -->
+			<RangeSlider
+				label="Posición horizontal del CI"
+				min={-maxXOffset}
+				max={maxXOffset}
+				value={config.ciXOffset}
+				unit="px"
+				on:input={(e) => updateConfig({ ciXOffset: parseInt(e.detail) })}
+			/>
+
+			<!-- Position Control Vertical (CI) -->
+			<RangeSlider
+				label="Posición vertical del CI"
+				min={-maxYOffset}
+				max={maxYOffset}
+				value={config.ciYOffset}
+				unit="px"
+				on:input={(e) => updateConfig({ ciYOffset: parseInt(e.detail) })}
 			/>
 
 			<!-- Font Size -->

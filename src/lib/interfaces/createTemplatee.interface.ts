@@ -3,13 +3,17 @@ export interface TemplateConfig {
 	imageUrl: string | null;
 	overlayText: string;
 	yOffset: number;
+	xOffset: number;
 	fontSize: number;
 	fontIndex: number;
+	ci: string;
+	ciXOffset: number;
+	ciYOffset: number;
 }
 
 export interface ExcelData {
 	file: File | null;
-	json: any[];
+	json: unknown[];
 	headers: string[];
 }
 
