@@ -52,7 +52,6 @@
 				{overlayText}
 			</div>
 		</div>
-		<!--CI con posicionamiento dinaminico-->
 		<div
 			class="absolute text-light-black dark:text-dark-white"
 			style="right: {12 - ciXOffset}px; bottom: {12 - ciYOffset}px;"
@@ -65,5 +64,4 @@
 			<p class="text-sm text-light-secondary dark:text-dark-secondary">No hay imagen cargada</p>
 		</div>
 	{/if}
-	<!-- <div class="absolute right-3 bottom-3 text-light-black dark:text-dark-white">{ci}</div> -->
 </div>

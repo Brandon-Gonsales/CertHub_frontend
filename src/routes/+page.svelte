@@ -4,27 +4,9 @@
 	import { Footer, Header } from '$lib/components/layout';
 	import { Button } from '$lib/components/ui';
 	import CertificatePreviewDesign from '$lib/components/ui/certificatePreviewDesign.svelte';
-	import DataTable from '$lib/components/ui/dataTable.svelte';
-	import FileUpload from '$lib/components/ui/fileUpload.svelte';
-	import {
-		CheckIcon,
-		ClipboardIcon,
-		DownloadIcon,
-		FacebookIcon,
-		FileTypeXlsIcon,
-		InstagramIcon,
-		LinkedinIcon,
-		MessageIcon,
-		SendIcon,
-		WhatsappIcon,
-		XIcon
-	} from '$lib/icons/outline';
+	import { DownloadIcon, FileTypeXlsIcon, MessageIcon, SendIcon } from '$lib/icons/outline';
 	import ChevronRightIcon from '$lib/icons/outline/chevronRightIcon.svelte';
-	import DeviceLaptopIcon from '$lib/icons/outline/deviceLaptopIcon.svelte';
-	import Menu2Icon from '$lib/icons/outline/menu2Icon.svelte';
-	import { BoltIcon, LockIcon, MoonIcon, PaletteIcon, SunIcon } from '$lib/icons/solid';
-	import FilePencilIcon from '$lib/icons/solid/filePencilIcon.svelte';
-	import { themeStore } from '$lib/stores/themeStore';
+	import { LockIcon, PaletteIcon, SunIcon } from '$lib/icons/solid';
 
 	const navigateToLogin = () => {
 		goto('/auth/sign-in');
@@ -33,8 +15,6 @@
 
 <div class="">
 	<Header />
-
-	<!-- Hero Section -->
 	<section class="px-4 pt-32 pb-20 sm:px-6 lg:px-8">
 		<div class="mx-auto max-w-7xl text-center">
 			<h1 class="mb-6 text-5xl font-bold text-light-black md:text-6xl dark:text-dark-white">

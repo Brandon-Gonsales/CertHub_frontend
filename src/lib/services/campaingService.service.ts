@@ -1,28 +1,22 @@
 import type { TemplatePayload } from '$lib/interfaces/compaing.interface';
-
+import { API_CONFIG } from '$lib/config/api.config';
 class CampaignService {
 	private readonly baseURL: string;
 
-	constructor(baseURL: string = 'https://certhub-backend.onrender.com') {
+	constructor(baseURL: string = API_CONFIG.BASE_URL) {
 		this.baseURL = baseURL;
 	}
 
-	/**
-	 * Actualiza la plantilla de una campaña
-	 * @param campaignId ID de la campaña
-	 * @param payload Datos a enviar en el body (incluye el archivo)
-	 * @returns Mensaje de respuesta del servidor
-	 */
 	async updateTemplate(campaignId: string, payload: TemplatePayload): Promise<string> {
 		console.log('Updating template...', payload);
 		const url = `${this.baseURL}/campaigns/${campaignId}/template`;
 
 		const formData = new FormData();
-		formData.append('x', payload.x.toString());
-		formData.append('y', payload.y.toString());
-		formData.append('font_size', payload.font_size.toString());
-		formData.append('font_family', payload.font_family);
-		formData.append('certificate', payload?.certificate || '');
+		formData.append('x', payload.x.toString()); // x posicion del texto nombre del estudiante
+		formData.append('y', payload.y.toString()); // y posicion del texto nombre del estudiante
+		formData.append('font_size', payload.font_size.toString()); // tamaño del texto nombre del estudiante
+		formData.append('font_family', payload.font_family); // tipo de fuente del texto nombre del estudiante
+		formData.append('certificate', payload?.certificate || ''); // archivo de la plantilla
 
 		try {
 			const response = await fetch(url, {

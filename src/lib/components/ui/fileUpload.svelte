@@ -1,4 +1,5 @@
 <script lang="ts">
+	//fileUpload.svelte
 	import { createEventDispatcher } from 'svelte';
 
 	export let label: string;

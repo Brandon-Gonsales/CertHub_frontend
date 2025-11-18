@@ -18,10 +18,10 @@ export interface ExcelData {
 }
 
 export const FONTS = [
-	'Inter, system-ui, sans-serif',
-	'Poppins, system-ui, sans-serif',
-	'Roboto, system-ui, sans-serif',
-	'Montserrat, system-ui, sans-serif',
-	'Playfair Display, Georgia, serif',
-	'Lora, Georgia, serif'
+	'Inter, system-ui, sans-serif', // "000"
+	'Poppins, system-ui, sans-serif', // "001"
+	'Roboto, system-ui, sans-serif', // "002"
+	'Montserrat, system-ui, sans-serif', // "003"
+	'Playfair Display, Georgia, serif', // "004"
+	'Lora, Georgia, serif' // "005"
 ];

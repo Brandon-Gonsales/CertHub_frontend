@@ -12,7 +12,6 @@
 	import { campaignService } from '$lib/services/campaingService.service';
 	import { idcampañaStore } from '$lib/stores/campaingStore';
 	import { onMount } from 'svelte';
-	import * as XLSX from 'xlsx';
 
 	let step = 1;
 	let campaignCreated = false;
@@ -144,11 +143,13 @@
 		}
 		isUpdatingTemplateStep1 = true;
 		try {
-			compaingData.x = 0;
-			compaingData.y = 60;
+			//console.log('templateConfig: ', templateConfig);
+			compaingData.x = templateConfig.xOffset;
+			compaingData.y = templateConfig.yOffset;
 			compaingData.font_size = templateConfig.fontSize;
-			compaingData.font_family = '001';
+			compaingData.font_family = `00${templateConfig.fontIndex}`;
 			compaingData.certificate = templateConfig.imageFile;
+			//console.log('compaingData: ', compaingData);
 			const response = await campaignService.updateTemplate(
 				idcampañaStore.get() as string,
 				compaingData
@@ -171,11 +172,6 @@
 		}
 		isUpdatingTemplateStep2 = true;
 		try {
-			compaingData.x = 0;
-			compaingData.y = 60;
-			compaingData.font_size = templateConfig.fontSize;
-			compaingData.font_family = '001';
-			compaingData.certificate = templateConfig.imageFile;
 			const response = await campaignService.uploadStudentsFile(
 				idcampañaStore.get() as string,
 				excelData.file as File
