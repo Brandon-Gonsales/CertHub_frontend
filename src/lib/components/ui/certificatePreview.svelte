@@ -46,7 +46,7 @@
 		<img src={imageUrl} alt="preview" class="h-full w-full object-contain" />
 		<div class="pointer-events-none absolute inset-0 flex items-center justify-center select-none">
 			<div
-				class="text-center font-semibold text-light-black dark:text-dark-white"
+				class="text-center font-semibold text-light-black"
 				style="font-size: {fontSize}px; font-family: {fontFamily}; text-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 90%; transform: translate({xOffset}px, {yOffset}px);"
 			>
 				{overlayText}
