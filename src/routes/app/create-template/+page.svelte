@@ -143,18 +143,18 @@
 		}
 		isUpdatingTemplateStep1 = true;
 		try {
-			//console.log('templateConfig: ', templateConfig);
-			compaingData.x = templateConfig.xOffset;
-			compaingData.y = templateConfig.yOffset;
-			compaingData.font_size = templateConfig.fontSize;
-			compaingData.font_family = `00${templateConfig.fontIndex}`;
-			compaingData.certificate = templateConfig.imageFile;
-			//console.log('compaingData: ', compaingData);
-			const response = await campaignService.updateTemplate(
-				idcampañaStore.get() as string,
-				compaingData
-			);
-			console.log('Response: ', response);
+			console.log('templateConfig: ', templateConfig);
+			// compaingData.x = templateConfig.xOffset;
+			// compaingData.y = templateConfig.yOffset;
+			// compaingData.font_size = templateConfig.fontSize;
+			// compaingData.font_family = `00${templateConfig.fontIndex}`;
+			// compaingData.certificate = templateConfig.imageFile;
+			// //console.log('compaingData: ', compaingData);
+			// const response = await campaignService.updateTemplate(
+			// 	idcampañaStore.get() as string,
+			// 	compaingData
+			// );
+			// console.log('Response: ', response);
 			goNext();
 		} catch (error) {
 			console.error('Error al actualizar la plantilla:', error);
