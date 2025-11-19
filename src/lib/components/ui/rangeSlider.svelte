@@ -1,4 +1,5 @@
 <script lang="ts">
+	//rangeSlider
 	import { createEventDispatcher } from 'svelte';
 
 	export let label: string;
