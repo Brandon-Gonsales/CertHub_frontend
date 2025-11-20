@@ -14,6 +14,8 @@
 	export let ci: string = '9857626';
 	export let ciXOffset: number = 0;
 	export let ciYOffset: number = 0;
+	export let overlayTextColor: string = 'black';
+	export let ciColor: string = 'black';
 
 	const dispatch = createEventDispatcher();
 
@@ -192,7 +194,7 @@
 				class:ring-2={isDraggingName}
 				class:ring-blue-500={isDraggingName}
 				class:ring-offset-2={isDraggingName}
-				style="font-size: {fontSize}px; font-family: {fontFamily}; text-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 90%; transform: translate({xOffset}px, {yOffset}px); pointer-events: auto;"
+				style="font-size: {fontSize}px; font-family: {fontFamily}; color: {overlayTextColor}; text-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 90%; transform: translate({xOffset}px, {yOffset}px); pointer-events: auto;"
 				on:mousedown={handleNameMouseDown}
 				on:touchstart={handleNameTouchStart}
 				role="button"
@@ -213,7 +215,7 @@
 				class:ring-2={isDraggingCI}
 				class:ring-blue-500={isDraggingCI}
 				class:ring-offset-2={isDraggingCI}
-				style="font-family: {fontFamily}; transform: translate({ciXOffset}px, {ciYOffset}px); pointer-events: auto;"
+				style="font-family: {fontFamily}; color: {ciColor}; transform: translate({ciXOffset}px, {ciYOffset}px); pointer-events: auto;"
 				on:mousedown={handleCIMouseDown}
 				on:touchstart={handleCITouchStart}
 				role="button"

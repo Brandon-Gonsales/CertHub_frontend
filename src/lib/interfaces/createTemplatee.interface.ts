@@ -9,6 +9,8 @@ export interface TemplateConfig {
 	ci: string;
 	ciXOffset: number;
 	ciYOffset: number;
+	overlayTextColor: string;
+	ciColor: string;
 }
 
 export interface ExcelData {

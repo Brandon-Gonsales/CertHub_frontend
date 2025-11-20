@@ -56,10 +56,11 @@
 			yOffset: 0,
 			xOffset: 0,
 			fontSize: 48,
-			fontIndex: 0,
 			ci: '9857626',
 			ciXOffset: 0,
-			ciYOffset: 0
+			ciYOffset: 0,
+			overlayTextColor: 'black',
+			ciColor: 'black'
 		});
 	}
 
@@ -97,6 +98,8 @@
 				ci={config.ci}
 				ciXOffset={config.ciXOffset}
 				ciYOffset={config.ciYOffset}
+				overlayTextColor={config.overlayTextColor}
+				ciColor={config.ciColor}
 				bind:containerElement={imageContainer}
 				bind:containerHeight
 				on:update={handlePreviewUpdate}
@@ -105,7 +108,6 @@
 
 		<!-- Controls -->
 		<div class="space-y-6">
-			<!-- Upload Image -->
 			<FileUpload
 				label="Imagen del certificado"
 				accept="image/*"
@@ -115,30 +117,63 @@
 			/>
 
 			<!-- Text Input -->
-			<div>
-				<label class="mb-2 block text-sm font-medium text-light-black dark:text-dark-white"
-					>Texto del certificado</label
-				>
-				<input
-					type="text"
-					class="focus:ring-opacity-20 w-full rounded-lg border border-light-four px-4 py-2.5 text-sm focus:border-light-tertiary focus:ring-2 focus:ring-light-tertiary focus:outline-none dark:border-dark-four dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary"
-					value={config.overlayText}
-					oninput={(e) => updateConfig({ overlayText: e.currentTarget.value })}
-					placeholder="Ingresa el texto a mostrar"
-				/>
+			<div class="flex gap-4">
+				<div>
+					<label class="mb-2 block text-sm font-medium text-light-black dark:text-dark-white"
+						>Texto del certificado</label
+					>
+					<input
+						type="text"
+						class="focus:ring-opacity-20 w-full rounded-lg border border-light-four px-4 py-2.5 text-sm focus:border-light-tertiary focus:ring-2 focus:ring-light-tertiary focus:outline-none dark:border-dark-four dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary"
+						value={config.overlayText}
+						oninput={(e) => updateConfig({ overlayText: e.currentTarget.value })}
+						placeholder="Ingresa el texto a mostrar"
+					/>
+				</div>
+
+				<!-- Text Color Input -->
+				<div>
+					<label class="mb-2 block text-sm font-medium text-light-black dark:text-dark-white"
+						>Color del texto</label
+					>
+					<div class="flex items-center gap-2">
+						<input
+							type="color"
+							class="h-10 w-20 cursor-pointer rounded border border-light-four p-1 dark:border-dark-four"
+							value={config.overlayTextColor}
+							oninput={(e) => updateConfig({ overlayTextColor: e.currentTarget.value })}
+						/>
+					</div>
+				</div>
 			</div>
 
-			<div>
-				<label class="mb-2 block text-sm font-medium text-light-black dark:text-dark-white"
-					>Número de CI</label
-				>
-				<input
-					type="text"
-					class="focus:ring-opacity-20 w-full rounded-lg border border-light-four px-4 py-2.5 text-sm focus:border-light-tertiary focus:ring-2 focus:ring-light-tertiary focus:outline-none dark:border-dark-four dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary"
-					value={config.ci}
-					oninput={(e) => updateConfig({ ci: e.currentTarget.value })}
-					placeholder="Ingresa el número de CI"
-				/>
+			<div class="flex gap-4">
+				<div>
+					<label class="mb-2 block text-sm font-medium text-light-black dark:text-dark-white"
+						>Número de CI</label
+					>
+					<input
+						type="text"
+						class="focus:ring-opacity-20 w-full rounded-lg border border-light-four px-4 py-2.5 text-sm focus:border-light-tertiary focus:ring-2 focus:ring-light-tertiary focus:outline-none dark:border-dark-four dark:focus:border-dark-tertiary dark:focus:ring-dark-tertiary"
+						value={config.ci}
+						oninput={(e) => updateConfig({ ci: e.currentTarget.value })}
+						placeholder="Ingresa el número de CI"
+					/>
+				</div>
+				<!-- CI Color Input -->
+				<div>
+					<label class="mb-2 block text-sm font-medium text-light-black dark:text-dark-white"
+						>Color del CI</label
+					>
+					<div class="flex items-center gap-2">
+						<input
+							type="color"
+							class="h-10 w-20 cursor-pointer rounded border border-light-four p-1 dark:border-dark-four"
+							value={config.ciColor}
+							oninput={(e) => updateConfig({ ciColor: e.currentTarget.value })}
+						/>
+					</div>
+				</div>
 			</div>
 
 			<!-- Font Size -->
@@ -160,7 +195,7 @@
 			/>
 
 			<!-- Información de posicionamiento actual -->
-			<div class="bg-light-one dark:bg-dark-one space-y-2 rounded-lg p-4">
+			<!-- <div class="bg-light-one dark:bg-dark-one space-y-2 rounded-lg p-4">
 				<p class="text-xs font-medium text-light-secondary dark:text-dark-secondary">
 					Posición actual:
 				</p>
@@ -178,9 +213,8 @@
 						</span>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
-			<!-- Actions -->
 			<div class="flex justify-end gap-3 pt-4">
 				<Button
 					onclick={reset}

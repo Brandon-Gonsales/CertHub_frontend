@@ -16,6 +16,8 @@ class CampaignService {
 		formData.append('y', payload.y.toString()); // y posicion del texto nombre del estudiante
 		formData.append('font_size', payload.font_size.toString()); // tamaño del texto nombre del estudiante
 		formData.append('font_family', payload.font_family); // tipo de fuente del texto nombre del estudiante
+		formData.append('font_color', payload.font_color); // color del texto nombre del estudiante
+		formData.append('ci_color', payload.ci_color); // color del texto ci
 		formData.append('certificate', payload?.certificate || ''); // archivo de la plantilla
 
 		try {

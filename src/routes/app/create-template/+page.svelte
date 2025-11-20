@@ -20,6 +20,7 @@
 	let isUpdatingTemplateStep1 = false;
 	let isUpdatingTemplateStep2 = false;
 	let isUpdatingTemplateStep3 = false;
+	const COLOR_DEFAULT = '#fa3842';
 
 	// Template configuration
 	let templateConfig: TemplateConfig = {
@@ -32,7 +33,9 @@
 		fontIndex: 0,
 		ci: '9857626',
 		ciXOffset: 0,
-		ciYOffset: 0
+		ciYOffset: 0,
+		overlayTextColor: COLOR_DEFAULT,
+		ciColor: COLOR_DEFAULT
 	};
 
 	const compaingData: TemplatePayload = {
@@ -40,7 +43,9 @@
 		y: 0,
 		font_size: 48,
 		font_family: '001',
-		certificate: null
+		certificate: null,
+		font_color: COLOR_DEFAULT,
+		ci_color: COLOR_DEFAULT
 	};
 
 	// Excel data
@@ -121,7 +126,9 @@
 			fontIndex: 0,
 			ci: '9857626',
 			ciXOffset: 0,
-			ciYOffset: 0
+			ciYOffset: 0,
+			overlayTextColor: COLOR_DEFAULT,
+			ciColor: COLOR_DEFAULT
 		};
 
 		// Reset excel data
@@ -144,17 +151,19 @@
 		isUpdatingTemplateStep1 = true;
 		try {
 			console.log('templateConfig: ', templateConfig);
-			// compaingData.x = templateConfig.xOffset;
-			// compaingData.y = templateConfig.yOffset;
-			// compaingData.font_size = templateConfig.fontSize;
-			// compaingData.font_family = `00${templateConfig.fontIndex}`;
-			// compaingData.certificate = templateConfig.imageFile;
-			// //console.log('compaingData: ', compaingData);
-			// const response = await campaignService.updateTemplate(
-			// 	idcampañaStore.get() as string,
-			// 	compaingData
-			// );
-			// console.log('Response: ', response);
+			compaingData.x = templateConfig.xOffset;
+			compaingData.y = templateConfig.yOffset;
+			compaingData.font_size = templateConfig.fontSize;
+			compaingData.font_family = `00${templateConfig.fontIndex}`;
+			compaingData.certificate = templateConfig.imageFile;
+			compaingData.font_color = templateConfig.overlayTextColor;
+			compaingData.ci_color = templateConfig.ciColor;
+
+			const response = await campaignService.updateTemplate(
+				idcampañaStore.get() as string,
+				compaingData
+			);
+			console.log('Response: ', response);
 			goNext();
 		} catch (error) {
 			console.error('Error al actualizar la plantilla:', error);

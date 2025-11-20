@@ -4,4 +4,6 @@ export interface TemplatePayload {
 	font_size: number;
 	font_family: string;
 	certificate: File | null;
+	font_color: string;
+	ci_color: string;
 }
