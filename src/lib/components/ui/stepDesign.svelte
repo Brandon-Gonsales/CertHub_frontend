@@ -7,6 +7,7 @@
 	import RangeSlider from './rangeSlider.svelte';
 	import FontSelector from './fontSelector.svelte';
 	import Button from './button.svelte';
+	import { CI_DEFAULT, COLOR_DEFAULT, FONT_SIZE_DEFAULT } from '$lib/constants/assets';
 
 	export let config: TemplateConfig;
 	export let isLoadingStep1: boolean;
@@ -55,12 +56,12 @@
 		updateConfig({
 			yOffset: 0,
 			xOffset: 0,
-			fontSize: 48,
-			ci: '9857626',
+			fontSize: FONT_SIZE_DEFAULT,
+			ci: CI_DEFAULT,
 			ciXOffset: 0,
 			ciYOffset: 0,
-			overlayTextColor: 'black',
-			ciColor: 'black'
+			overlayTextColor: COLOR_DEFAULT,
+			ciColor: COLOR_DEFAULT
 		});
 	}
 

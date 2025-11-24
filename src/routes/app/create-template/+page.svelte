@@ -6,6 +6,12 @@
 	import StepDesign from '$lib/components/ui/stepDesign.svelte';
 	import StepSend from '$lib/components/ui/stepSend.svelte';
 	import { API_CONFIG } from '$lib/config/api.config';
+	import {
+		CI_DEFAULT,
+		COLOR_DEFAULT,
+		FONT_SIZE_DEFAULT,
+		NAME_DEFAULT
+	} from '$lib/constants/assets';
 	import { PlusIcon } from '$lib/icons/outline';
 	import type { TemplatePayload } from '$lib/interfaces/compaing.interface';
 	import type { ExcelData, TemplateConfig } from '$lib/interfaces/createTemplatee.interface';
@@ -20,18 +26,17 @@
 	let isUpdatingTemplateStep1 = false;
 	let isUpdatingTemplateStep2 = false;
 	let isUpdatingTemplateStep3 = false;
-	const COLOR_DEFAULT = '#fa3842';
 
 	// Template configuration
 	let templateConfig: TemplateConfig = {
 		imageFile: null,
 		imageUrl: null,
-		overlayText: 'Nombre del participante',
+		overlayText: NAME_DEFAULT,
 		yOffset: 0,
 		xOffset: 0,
-		fontSize: 48,
+		fontSize: FONT_SIZE_DEFAULT,
 		fontIndex: 0,
-		ci: '9857626',
+		ci: CI_DEFAULT,
 		ciXOffset: 0,
 		ciYOffset: 0,
 		overlayTextColor: COLOR_DEFAULT,
@@ -41,7 +46,7 @@
 	const compaingData: TemplatePayload = {
 		x: 0,
 		y: 0,
-		font_size: 48,
+		font_size: FONT_SIZE_DEFAULT,
 		font_family: '001',
 		certificate: null,
 		font_color: COLOR_DEFAULT,
@@ -119,12 +124,12 @@
 		templateConfig = {
 			imageFile: null,
 			imageUrl: null,
-			overlayText: 'Nombre del participante',
+			overlayText: NAME_DEFAULT,
 			yOffset: 0,
 			xOffset: 0,
-			fontSize: 48,
+			fontSize: FONT_SIZE_DEFAULT,
 			fontIndex: 0,
-			ci: '9857626',
+			ci: CI_DEFAULT,
 			ciXOffset: 0,
 			ciYOffset: 0,
 			overlayTextColor: COLOR_DEFAULT,
