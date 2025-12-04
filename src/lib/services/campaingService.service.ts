@@ -32,7 +32,7 @@ class CampaignService {
 
 			if (!response.ok) {
 				const errorData = await response.json().catch(() => ({}));
-				throw new Error(errorData.message || 'Ocurrió un error al actualizar la plantilla.');
+				throw new Error(errorData.message || 'Ocurrio un error al actualizar la plantilla.');
 			}
 
 			const data = await response.json();
@@ -40,7 +40,7 @@ class CampaignService {
 		} catch (error: unknown) {
 			console.error('Error al actualizar la plantilla:', error);
 			throw new Error(
-				(error as Error).message || 'Ocurrió un error inesperado al actualizar la plantilla.'
+				(error as Error).message || 'Ocurrio un error inesperado al actualizar la plantilla.'
 			);
 		}
 	}
@@ -70,7 +70,7 @@ class CampaignService {
 			return data.message || 'Archivo de estudiantes procesado correctamente.';
 		} catch (error: unknown) {
 			console.error('Error al subir el archivo de estudiantes:', error);
-			throw new Error(error.message || 'Ocurrió un error inesperado al subir el archivo.');
+			throw new Error(error.message || 'Ocurrio un error inesperado al subir el archivo.');
 		}
 	}
 
